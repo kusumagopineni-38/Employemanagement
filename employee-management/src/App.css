@@ -1,0 +1,1134 @@
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg)
+      rotateY(39deg) scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg)
+      rotateY(39deg) scale(0.8);
+  }
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
+
+
+/* =========================================
+   EMPLOYEE MANAGEMENT POPUPS
+========================================= */
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+}
+
+.popup-box {
+  background: white;
+
+  width: 420px;
+  max-width: 90%;
+
+  padding: 30px;
+
+  border-radius: 10px;
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+
+  animation: popupOpen 0.2s ease-in-out;
+}
+
+.popup-box h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+
+  text-align: center;
+
+  font-size: 24px;
+}
+
+.popup-box label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.popup-box input {
+  width: 100%;
+  padding: 10px;
+
+  border: 1px solid #aaa;
+  border-radius: 5px;
+
+  font-size: 16px;
+  outline: none;
+}
+
+.popup-box input:focus {
+  border-color: #1976d2;
+}
+
+.popup-box button {
+  padding: 9px 16px;
+  margin-top: 10px;
+
+  cursor: pointer;
+
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  background: white;
+
+  font-size: 15px;
+}
+
+.popup-box button:hover {
+  background: #f2f2f2;
+}
+
+
+/* =========================================
+   POPUP ANIMATION
+========================================= */
+
+@keyframes popupOpen {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* =========================================
+   SUCCESS MESSAGE
+========================================= */
+
+.success-message {
+  background: #d4edda;
+  color: #155724;
+
+  border: 1px solid #c3e6cb;
+
+  padding: 12px 18px;
+  border-radius: 6px;
+
+  margin: 15px auto;
+
+  max-width: 600px;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   ERROR MESSAGE
+========================================= */
+
+.error-message {
+  background: #f8d7da;
+  color: #721c24;
+
+  border: 1px solid #f5c6cb;
+
+  padding: 12px 18px;
+  border-radius: 6px;
+
+  margin: 15px auto;
+
+  max-width: 600px;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   EMPLOYEE DETAILS
+========================================= */
+
+.employee-details {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.employee-details p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+
+/* =========================================
+   ADDRESS CARD
+========================================= */
+
+.address-card {
+  border: 1px solid #ddd;
+
+  padding: 18px;
+  margin: 15px 0;
+
+  border-radius: 8px;
+
+  background: #fafafa;
+}
+
+.address-card p {
+  margin: 7px 0;
+}
+
+
+/* =========================================
+   BACK LINK
+========================================= */
+
+.back-link {
+  display: inline-block;
+
+  margin-top: 25px;
+
+  color: #4b1a8f;
+
+  font-size: 18px;
+
+  text-decoration: underline;
+}
+
+.back-link:hover {
+  color: #1976d2;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+  .popup-box {
+    width: 90%;
+    padding: 20px;
+  }
+}
+/* =========================================
+   COLORFUL LOGIN PAGE
+========================================= */
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  background: #f4f6ff;
+  overflow: hidden;
+}
+
+/* =========================================
+   LEFT SIDE
+========================================= */
+
+.login-brand {
+  width: 50%;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.25), transparent 25%),
+    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.18), transparent 25%),
+    linear-gradient(135deg, #4f46e5, #7c3aed, #2563eb);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  position: relative;
+}
+
+/* Decorative circles */
+
+.login-brand::before {
+  content: "";
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.10);
+
+  top: 8%;
+  left: 8%;
+}
+
+.login-brand::after {
+  content: "";
+  position: absolute;
+
+  width: 250px;
+  height: 250px;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.08);
+
+  bottom: -80px;
+  right: -60px;
+}
+
+.brand-content {
+  max-width: 500px;
+  padding: 50px;
+
+  position: relative;
+  z-index: 2;
+}
+
+.brand-icon {
+  font-size: 70px;
+  margin-bottom: 20px;
+}
+
+.brand-content h1 {
+  font-size: 48px;
+  line-height: 1.05;
+
+  margin: 0;
+
+  font-weight: 700;
+}
+
+.brand-content p {
+  margin-top: 25px;
+
+  font-size: 18px;
+  line-height: 1.7;
+
+  color: rgba(255,255,255,0.9);
+}
+
+/* =========================================
+   RIGHT SIDE
+========================================= */
+
+.login-section {
+  width: 50%;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  box-sizing: border-box;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(124,58,237,0.12),
+      transparent 35%
+    ),
+    #f8f9ff;
+}
+
+/* =========================================
+   LOGIN CARD
+========================================= */
+
+.login-card {
+  width: 430px;
+  max-width: 100%;
+
+  background: rgba(255,255,255,0.96);
+
+  padding: 45px;
+
+  border-radius: 20px;
+
+  border: 1px solid rgba(124,58,237,0.12);
+
+  box-shadow:
+    0 20px 60px rgba(79,70,229,0.15);
+
+  box-sizing: border-box;
+}
+
+/* =========================================
+   LOGIN ICON
+========================================= */
+
+.login-icon {
+  width: 70px;
+  height: 70px;
+
+  margin: 0 auto 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 20px;
+
+  background: linear-gradient(
+    135deg,
+    #4f46e5,
+    #9333ea
+  );
+
+  color: white;
+
+  font-size: 35px;
+
+  box-shadow:
+    0 10px 25px rgba(124,58,237,0.3);
+}
+
+/* =========================================
+   HEADING
+========================================= */
+
+.login-card h2 {
+  text-align: center;
+
+  margin: 10px 0;
+
+  font-size: 30px;
+
+  background: linear-gradient(
+    90deg,
+    #4338ca,
+    #9333ea
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.login-subtitle {
+  text-align: center;
+
+  color: #777;
+
+  margin-bottom: 35px;
+}
+
+/* =========================================
+   FORM
+========================================= */
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+
+  font-weight: 600;
+
+  margin-bottom: 8px;
+
+  color: #37306b;
+}
+
+.form-group input {
+  width: 100%;
+
+  padding: 14px 15px;
+
+  border: 1px solid #d8d5ee;
+
+  border-radius: 9px;
+
+  font-size: 16px;
+
+  box-sizing: border-box;
+
+  outline: none;
+
+  background: #fafaff;
+
+  transition: 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #7c3aed;
+
+  background: white;
+
+  box-shadow:
+    0 0 0 4px rgba(124,58,237,0.12);
+}
+
+.form-group input::placeholder {
+  color: #aaa;
+}
+
+/* =========================================
+   ERROR
+========================================= */
+
+.login-error {
+  background: #fff1f2;
+
+  color: #dc2626;
+
+  border: 1px solid #fecdd3;
+
+  padding: 11px 12px;
+
+  border-radius: 8px;
+
+  margin-bottom: 18px;
+
+  text-align: center;
+}
+
+/* =========================================
+   SIGN IN BUTTON
+========================================= */
+
+.login-button {
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: linear-gradient(
+    90deg,
+    #4f46e5,
+    #7c3aed,
+    #9333ea
+  );
+
+  color: white;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 20px rgba(124,58,237,0.25);
+
+  transition: all 0.3s ease;
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 28px rgba(124,58,237,0.35);
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.login-footer {
+  text-align: center;
+
+  color: #999;
+
+  font-size: 13px;
+
+  margin-top: 30px;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 800px) {
+
+  .login-page {
+    flex-direction: column;
+  }
+
+  .login-brand {
+    width: 100%;
+    min-height: 35vh;
+  }
+
+  .brand-content {
+    padding: 30px;
+    text-align: center;
+  }
+
+  .brand-icon {
+    font-size: 45px;
+  }
+
+  .brand-content h1 {
+    font-size: 32px;
+  }
+
+  .brand-content p {
+    display: none;
+  }
+
+  .login-section {
+    width: 100%;
+    min-height: 65vh;
+
+    padding: 20px;
+  }
+
+  .login-card {
+    padding: 30px 25px;
+  }
+  /* =========================================
+   ADD EMPLOYEE FORM
+========================================= */
+
+.add-employee-page {
+  min-height: 100vh;
+  padding: 40px;
+  background: #f5f7fb;
+  box-sizing: border-box;
+}
+
+.employee-card {
+  max-width: 650px;
+  margin: 20px auto;
+  padding: 35px 40px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+.form-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.form-icon {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: #ede9fe;
+  font-size: 27px;
+}
+
+.form-header h1 {
+  margin: 0;
+  color: #312e81;
+  font-size: 28px;
+}
+
+.form-header p {
+  margin: 5px 0 0;
+  color: #777;
+  font-size: 14px;
+}
+
+.employee-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.employee-form .form-group {
+  margin-bottom: 0;
+}
+
+.employee-form .form-group label {
+  color: #37306b;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.employee-form .form-group input {
+  width: 100%;
+  padding: 14px 15px;
+  box-sizing: border-box;
+  border: 1px solid #d8d5ee;
+  border-radius: 9px;
+  outline: none;
+  background: #fafaff;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.employee-form .form-group input:focus {
+  border-color: #7c3aed;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.12);
+}
+
+.employee-form .form-group input::placeholder {
+  color: #aaa;
+}
+
+.save-button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 9px;
+  background: linear-gradient(
+    90deg,
+    #4f46e5,
+    #7c3aed,
+    #9333ea
+  );
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.25);
+  transition: all 0.3s ease;
+}
+
+.save-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(124, 58, 237, 0.35);
+}
+
+.save-button:active {
+  transform: translateY(0);
+}
+
+/* =========================================
+   ADD EMPLOYEE - MOBILE
+========================================= */
+
+@media (max-width: 800px) {
+  .add-employee-page {
+    padding: 20px;
+  }
+
+  .employee-card {
+    padding: 25px 20px;
+    margin: 10px auto;
+  }
+
+  .form-header h1 {
+    font-size: 24px;
+  }
+}
+/* =========================================
+   MAIN APPLICATION LAYOUT
+========================================= */
+
+.app-layout {
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+/* HEADER */
+
+.app-header {
+  width: 100%;
+  height: 75px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 30px;
+  box-sizing: border-box;
+
+  background: linear-gradient(90deg, #1976d2, #4f46e5);
+  color: white;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+.app-header h2 {
+  margin: 0;
+  color: white;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+/* BODY */
+
+.app-body {
+  display: flex;
+  width: 100%;
+  min-height: calc(100vh - 75px);
+}
+
+/* SIDEBAR */
+
+.sidebar {
+  width: 240px;
+  min-width: 240px;
+  min-height: calc(100vh - 75px);
+
+  padding: 30px 18px;
+
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+
+  box-shadow: 3px 0 15px rgba(0, 0, 0, 0.05);
+
+  box-sizing: border-box;
+}
+
+/* MENU */
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-menu a {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px 14px;
+
+  border-radius: 10px;
+
+  color: #4b5563;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition: all 0.25s ease;
+}
+
+.sidebar-menu a:hover {
+  background: #ede9fe;
+  color: #6d28d9;
+  transform: translateX(4px);
+}
+
+.sidebar-menu a span:first-child {
+  width: 25px;
+  text-align: center;
+  font-size: 20px;
+}
+
+/* SIGN OUT */
+
+.sidebar-signout {
+  margin-top: 45px;
+  padding-top: 25px;
+
+  border-top: 1px solid #e5e7eb;
+}
+
+.sidebar-signout button {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px 14px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: transparent;
+
+  color: #dc2626;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+  text-align: left;
+
+  transition: all 0.25s ease;
+}
+
+.sidebar-signout button:hover {
+  background: #fff1f2;
+  color: #b91c1c;
+}
+
+/* MAIN CONTENT */
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+
+  background: #f5f7fb;
+}
+
+.page-content {
+  width: 100%;
+  min-height: calc(100vh - 75px);
+
+  padding: 30px;
+
+  box-sizing: border-box;
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+  .sidebar {
+    width: 190px;
+    min-width: 190px;
+    padding: 25px 10px;
+  }
+
+  .sidebar-menu a {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .app-header {
+    height: 65px;
+    padding: 0 20px;
+  }
+
+  .app-header h2 {
+    font-size: 20px;
+  }
+
+  .page-content {
+    padding: 20px;
+  }
+}
+}
+
+.page-content {
+  width: 100%;
+  min-height: calc(100vh - 75px);
+
+  padding: 30px;
+
+  box-sizing: border-box;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 800px) {
+
+  .sidebar {
+    width: 190px;
+    min-width: 190px;
+    padding: 25px 10px;
+  }
+
+  .sidebar-menu a {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .app-header {
+    height: 65px;
+    padding: 0 20px;
+  }
+
+  .app-header h2 {
+    font-size: 20px;
+  }
+
+  .page-content {
+    padding: 20px;
+  }
+}
