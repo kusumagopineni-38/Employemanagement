@@ -13,7 +13,7 @@ function AddEmployee() {
     try {
       console.log("Sending employee data...");
 
-      const response = await fetch("http://localhost:5000/employees", {
+      const response = await fetch("http://54.204.231.101:5000/employees", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
