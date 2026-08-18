@@ -9,7 +9,7 @@ const EmployeeList = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/employees")
+      .get("http://54.204.231.101:5000/employees")
       .then((response) => {
         setEmployees(response.data);
       })
@@ -30,7 +30,7 @@ const EmployeeList = () => {
 
     try {
       await axios.delete(
-        `http://localhost:5000/employees/${selectedEmployee.id}`
+        `http://54.204.231.101:5000/employees/${selectedEmployee.id}`
       );
 
       // Remove employee from UI
