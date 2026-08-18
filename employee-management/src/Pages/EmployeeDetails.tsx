@@ -43,7 +43,7 @@ const EmployeeDetails = () => {
 
   const loadEmployee = () => {
     axios
-      .get(`http://localhost:5000/employees/${id}`)
+      .get(`http://54.204.231.101:5000/employees/${id}`)
       .then((response) => {
         setEmployee(response.data);
 
@@ -61,7 +61,7 @@ const EmployeeDetails = () => {
 
   const loadAddress = () => {
     axios
-      .get(`http://localhost:5000/employees/${id}/address`)
+      .get(`http://54.204.231.101:5000/employees/${id}/address`)
       .then((response) => {
         setAddress(response.data);
       })
@@ -72,7 +72,7 @@ const EmployeeDetails = () => {
 
   const loadManagers = () => {
     axios
-      .get("http://localhost:5000/employees")
+      .get("http://54.204.231.101:5000/employees")
       .then((response) => {
         setManagers(response.data);
       })
@@ -90,7 +90,7 @@ const EmployeeDetails = () => {
   const fetchManagers = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/employees"
+        "http://54.204.231.101:5000/employees"
       );
 
       const data = await response.json();
@@ -121,7 +121,7 @@ const EmployeeDetails = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/employees/${id}`,
+        `http://54.204.231.101:5000/employees/${id}`,
         {
           name: employeeData.name,
           department: employeeData.department,
@@ -144,7 +144,7 @@ const EmployeeDetails = () => {
   const handleDeleteEmployee = async () => {
     try {
       await axios.delete(
-        `http://localhost:5000/employees/${id}`
+        `http://54.204.231.101:5000/employees/${id}`
       );
 
       setShowDeleteConfirm(false);
@@ -178,7 +178,7 @@ const EmployeeDetails = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/employees/${id}/address`,
+        `http://54.204.231.101:5000/employees/${id}/address`,
         addressData
       );
 
@@ -224,7 +224,7 @@ const EmployeeDetails = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/employees/address/${selectedAddressId}`,
+        `http://54.204.231.101:5000/employees/address/${selectedAddressId}`,
         addressData
       );
 
@@ -259,7 +259,7 @@ const EmployeeDetails = () => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:5000/employees/address/${selectedAddressId}`
+        `http://54.204.231.101:5000/employees/address/${selectedAddressId}`
       );
 
       setShowAddressDeleteConfirm(false);
@@ -278,7 +278,7 @@ const EmployeeDetails = () => {
   const handleUpdateManager = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/employees/${id}/manager`,
+        `http://54.204.231.101:5000/employees/${id}/manager`,
         {
           manager_id: selectedManagerId
             ? Number(selectedManagerId)
