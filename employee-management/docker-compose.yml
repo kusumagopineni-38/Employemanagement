@@ -1,0 +1,17 @@
+services:
+
+  frontend:
+    image: kusumacloud/employee-management:employee-frontend
+    container_name: employee-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  backend:
+    image: kusumacloud/employee-management:employee-backend
+    container_name: employee-backend
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
